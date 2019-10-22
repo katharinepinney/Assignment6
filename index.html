@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+	<script src="jquery-3.4.1.js"></script>
+<title>Assignment6</title>
+	<style>
+		
+		img
+		{
+			float: left;
+			width: 15%;
+			position: relative;
+			z-index: 0;
+			padding: 20px;
+		}
+		
+		h5 
+		{
+			position: absolute;
+			z-index: 1;
+			display: inline-block;
+			padding-left: 4%;
+			opacity: 0;
+			color: #fff;
+		}
+		
+		#pic0 h5
+		{
+			padding-left: 5%;
+		}
+		
+		#pic1 h5
+		{
+			padding-left: 7%;
+		}
+		
+		#pic2 h5
+		{
+			padding-left: 6%;
+		}
+		
+		#pic4 h5
+		{
+			padding-left: 5%;
+		}
+		
+	</style>
+	
+	<h1>Joan's Art Gallery</h1>
+	
+	<script language="javascript">
+		
+		//object array
+		var array = new Array(5);
+		
+		photo1 = new Object();
+		photo1.name = "Building Blocks"
+		photo1.price = "$250";
+		photo1.picture = "image1.jpg"
+		array[0] = photo1;
+		
+		photo2 = new Object();
+		photo2.name = "Poolside"
+		photo2.price = "$100";
+		photo2.picture = "image2.jpg"
+		array[1] = photo2;
+		
+		photo3 = new Object();
+		photo3.name = "Shattered Ice"
+		photo3.price = "$500";
+		photo3.picture = "image3.jpg"
+		array[2] = photo3;
+		
+		photo4 = new Object();
+		photo4.name = "Early Morning Sail"
+		photo4.price = "$50";
+		photo4.picture = "image4.jpg"
+		array[3] = photo4;
+		
+		photo5 = new Object();
+		photo5.name = "Doorway in Spain"
+		photo5.price = "$130";
+		photo5.picture = "image5.jpg"
+		array[4] = photo5;
+		
+		
+		//function that prints object array to screen
+		function displayImages()
+		{
+			for (i=0; i<array.length; i++)
+			{
+				document.write(
+					"<div id='pic" + i + "' class='container'>" +
+					"<h5 id='text" + i + "'>" + array[i].name + "<br>" + array[i].price + "</h5>" +
+					"<img src='" + array[i].picture + "'>" +
+					"</div>");
+			}
+		}
+		
+		//calls function		
+		displayImages(array);
+		
+		//jquery
+		$(document).ready (function() { 
+			//causes larger image to appear when mouse enters thumbnail image
+			$("img").mouseenter(function(e){
+				var newImg = "<img src=" + $(this).attr("src") + "></img>";
+				  $('#largerImage')
+				  	.html($(newImg)
+					.animate({height: '700', width: '450', opacity: '0'}, 10)
+				  	.fadeTo("slow",1));
+			  })
+			//causes larger image to disappear when mouse leaves thumbnail image
+			$("img").mouseleave(function(e){
+				var newImg = "<img src=" + $(this).attr("src") + "></img>";
+				  $('#largerImage')
+				  	.html($(newImg)
+					.hide()); 
+			  })
+			
+			//fades in name and price of piece when thumbnail is clicked
+			$('#pic0').click(function(e){
+				$('#text0')
+					.fadeTo(200,1)
+					.animate({opacity: '1'},5000)
+					.fadeTo(200,0);
+			})
+			$('#pic1').click(function(e){
+				$('#text1')
+					.fadeTo("slow",1)
+					.animate({opacity: '1'},5000)
+					.fadeTo(200,0);
+			})
+			$('#pic2').click(function(e){
+				$('#text2')
+					.fadeTo("slow",1)
+					.animate({opacity: '1'},5000)
+					.fadeTo(200,0);
+			})
+			$('#pic3').click(function(e){
+				$('#text3')
+					.fadeTo("slow",1)
+					.animate({opacity: '1'},5000)
+					.fadeTo(200,0);
+			})
+			$('#pic4').click(function(e){
+				$('#text4')
+					.fadeTo("slow",1)
+					.animate({opacity: '1'},5000)
+					.fadeTo(200,0);
+			})
+		});	  
+	</script>
+</head>
+<body>
+	<div class="lImage" id="largerImage"></div>
+</body>
+</html>
